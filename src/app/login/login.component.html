@@ -1,0 +1,60 @@
+<div class="container">
+<div style="text-align:center">
+    <h1>
+      Welcome to {{ title }}!
+    </h1>
+  </div>
+
+  <div class="row">
+  <ul class="nav nav-tabs">
+    <li class="active col-md-6"><a data-toggle="tab" href="#login">Login</a></li>
+    <li class="col-md-6"><a data-toggle="tab" href="#registration">Registration</a></li>
+  </ul>
+  </div>
+
+  <div class="row">
+  <div class="tab-content">
+
+    <!--login-->
+    <div id="login" class="tab-pane fade in active form-group">
+      <div class="row spacer5">
+      <label class = "col-md-1">Username:</label> 
+      <input class = "col-md-2" name="username" type="text" placeholder="Enter username" [(ngModel)]="username">
+      </div>
+      <div class="row spacer5">
+      <label class = "col-md-1">Password:</label> 
+      <input class = "col-md-2" name="password" type="password" placeholder="Enter password" [(ngModel)]="password">
+      </div>
+      <div class="row spacer5">
+          <label class = "col-md-1">Role:</label> 
+          <input class = "col-md-1" type="radio" name="role" value="student" [(ngModel)]="role">Student<br>
+          <input class = "col-md-1" type="radio" name="role" value="professor" [(ngModel)]="role">Professor<br> 
+      </div>
+      <div class="row spacer5">
+          <input type="button" class="btn btn-primary" value="Login" (click)="login()">
+    </div>
+    </div>
+    <!--registration-->
+    <div id="registration" class="tab-pane fade form-group">
+        <div class="row spacer5">
+            <label class = "col-md-1">Username:</label> 
+            <input class = "col-md-2" name="rusername" type="text" placeholder="Enter username" [(ngModel)]="username">
+            </div>
+            <div class="row spacer5">
+            <label class = "col-md-1">Password:</label> 
+            <input class = "col-md-2" name="rpassword" type="password" placeholder="Enter password" [(ngModel)]="password">
+            </div>
+            <div class="row spacer5">
+                <label class = "col-md-1">Role:</label> 
+                <input class = "col-md-1" type="radio" name="rrole" value="student" [(ngModel)]="role">Student<br>
+                <input class = "col-md-1" type="radio" name="rrole" value="professor" [(ngModel)]="role">Professor<br> 
+            </div>
+            <div class="row spacer5">
+            <input type="button" class="btn btn-primary" value="Register" (click)="register()">
+          </div>
+    </div>
+
+  </div>
+</div>
+
+</div>

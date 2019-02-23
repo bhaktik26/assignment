@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row spacer5">
+    <h1>
+      Welcome {{professor}}
+    </h1>
+  </div>
+
+  <div class="row spacer5">
+    <input type="button" class="btn btn-primary" value="All courses" (click)="viewAllCourses()">
+  </div>
+
+  <div class="row spacer5" *ngIf="displayCourses==true">
+    All courses come here
+  </div>
+
+  <div class="row spacer5">
+    <input type="button" class="btn btn-primary" value="Create course" (click)="createCourse()">
+  </div>
+
+  <div class="row spacer5" *ngIf="displayCreation==true">
+    <div class="row spacer5">
+      <label class="col-md-2">Course name:</label>
+      <input class="col-md-2" name="course_name" type="text" placeholder="Course name" [(ngModel)]="name">
+    </div>
+    <div class="row spacer5">
+      <label class="col-md-2">Course description:</label>
+      <input class="col-md-2" name="course_description" type="password" placeholder="Course description"
+        [(ngModel)]="description">
+    </div>
+    <div class="row spacer5">
+      <input type="button" class="btn btn-primary" value="Create" (click)="create()">
+    </div>
+  </div>
+
+</div>
