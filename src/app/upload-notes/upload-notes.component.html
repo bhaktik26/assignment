@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+    <h1>
+        Upload notes
+      </h1>
+    </div>
+
+    <form ngNativeValidate (ngSubmit)="uploadNote()">
+        <div class="row spacer5">
+          <label class="col-md-2">Note name:</label>
+          <input class="col-md-2" name="note_name" type="text" placeholder="Note name" [(ngModel)]="name" required />
+        </div>
+        <div class="row spacer5">
+          <label class="col-md-2">Chapter name:</label>
+          <input class="col-md-2" name="chapter_name" type="text" placeholder="Chapter name"
+            [(ngModel)]="description" required />
+        </div>
+        <div class="row spacer5">
+          <input type="submit" class="btn btn-primary" value="Upload note">
+        </div>
+      </form>
+
+</div>

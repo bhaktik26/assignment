@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-professor',
@@ -11,24 +12,19 @@ export class ProfessorComponent implements OnInit {
   displayCreation = false;
   displayCourses = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   viewAllCourses() {
-    this.displayCourses = true;
+    this.router.navigateByUrl('/professorCourses');
+    // this.displayCourses = true;
   }
 
   createCourse() {
-    this.displayCreation = true;
-  }
-
-  /**
-   * insert course into db
-   */
-  create() {
-
+    this.router.navigateByUrl('/createCourse');
+    // this.displayCreation = true;
   }
 
 }

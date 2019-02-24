@@ -8,7 +8,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { StudentComponent } from './student/student.component';
 import { ProfessorComponent } from './professor/professor.component';
-import { CourseComponent } from './course/course.component';
+import { ProfessorCoursesComponent } from './professor-courses/professor-courses.component';
+import { CreateCourseComponent } from './create-course/create-course.component';
+import { ShowNotesComponent } from './show-notes/show-notes.component';
+import { UploadNotesComponent } from './upload-notes/upload-notes.component';
+import { UploadAssignmentComponent } from './upload-assignment/upload-assignment.component';
+import { EvaluateAssignmentComponent } from './evaluate-assignment/evaluate-assignment.component';
  
 
 @NgModule({
@@ -17,7 +22,12 @@ import { CourseComponent } from './course/course.component';
     LoginComponent,
     StudentComponent,
     ProfessorComponent,
-    CourseComponent
+    ProfessorCoursesComponent,
+    CreateCourseComponent,
+    ShowNotesComponent,
+    UploadNotesComponent,
+    UploadAssignmentComponent,
+    EvaluateAssignmentComponent
   ],
   imports: [
     BrowserModule,

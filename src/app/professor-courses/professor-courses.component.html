@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <h2>All courses</h2>
+  </div>
+
+  <div *ngFor="let course of courses" class="row">
+    <div class="row">
+      <div class="spacer5 col-md-4" style="border-style:solid; border-width:1px">
+        <label>{{course.name}}</label><br>
+        <label>{{course.description}}</label>
+      </div>
+      <div class="spacer5 col-md-8" style="border-style:solid; border-width:1px">
+        <div class="col-md-3">
+          <input type="submit" class="btn btn-primary" value="Show notes" (click)="showNotes()">
+        </div>
+        <div class="col-md-3">
+          <input type="submit" class="btn btn-primary" value="Upload notes" (click)="uploadNotes()">
+        </div>
+        <div class="col-md-3">
+          <input type="submit" class="btn btn-primary" value="Upload Assignment" (click)="uploadAssignment()">
+        </div>
+        <div class="col-md-3">
+            <input type="submit" class="btn btn-primary" value="Evaluate Assignment" (click)="evaluateAssignment()">
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   username: String = "";
   password: String = "";
   body = {};
+  title = 'VirtEdu';
+  showMessage = false;
 
   constructor(private httpService : HttpClient, private router: Router) { }
 
@@ -35,7 +37,7 @@ export class LoginComponent implements OnInit {
     console.log(this.password);
     console.log(this.role);
    // this.httpService.post('', this.body).subscribe((response) => {console.log(response)});
-   
+   this.showMessage = true;
   }
 
 }
