@@ -14,6 +14,10 @@ import { ShowNotesComponent } from './show-notes/show-notes.component';
 import { UploadNotesComponent } from './upload-notes/upload-notes.component';
 import { UploadAssignmentComponent } from './upload-assignment/upload-assignment.component';
 import { EvaluateAssignmentComponent } from './evaluate-assignment/evaluate-assignment.component';
+import { StudentCoursesComponent } from './student-courses/student-courses.component';
+import { EnrolledCoursesComponent } from './enrolled-courses/enrolled-courses.component';
+import { ResultsComponent } from './results/results.component';
+import { CompleteAssignmentComponent } from './complete-assignment/complete-assignment.component';
  
 
 @NgModule({
@@ -27,7 +31,11 @@ import { EvaluateAssignmentComponent } from './evaluate-assignment/evaluate-assi
     ShowNotesComponent,
     UploadNotesComponent,
     UploadAssignmentComponent,
-    EvaluateAssignmentComponent
+    EvaluateAssignmentComponent,
+    StudentCoursesComponent,
+    EnrolledCoursesComponent,
+    ResultsComponent,
+    CompleteAssignmentComponent
   ],
   imports: [
     BrowserModule,
