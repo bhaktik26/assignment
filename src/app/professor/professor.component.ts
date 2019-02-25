@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-professor',
@@ -8,11 +10,12 @@ import { Router } from '@angular/router';
 })
 export class ProfessorComponent implements OnInit {
 
-  professor: String = "pro";
   displayCreation = false;
   displayCourses = false;
+  name = "";
+  professor: String = this.dataService.serviceData;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
   }

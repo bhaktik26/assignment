@@ -17,11 +17,16 @@
 
       <!--login-->
       <div id="login" class="tab-pane fade in active form-group">
-          <form ngNativeValidate (ngSubmit)="login()">
+        <form ngNativeValidate (ngSubmit)="login()">
+          <div class="row spacer5">
+            <label class="col-md-1">Name:</label>
+            <input class="col-md-2" name="name" type="text" placeholder="Enter name" [(ngModel)]="name"
+              required="required" />
+          </div>
           <div class="row spacer5">
             <label class="col-md-1">Username:</label>
             <input class="col-md-2" name="username" type="text" placeholder="Enter username" [(ngModel)]="username"
-              required="required"/>
+              required="required" />
           </div>
           <div class="row spacer5">
             <label class="col-md-1">Password:</label>
@@ -30,14 +35,15 @@
           </div>
           <div class="row spacer5" ng-init="role=student">
             <label class="col-md-1">Role:</label>
-            <input class="col-md-1" type="radio" name="role" value="student" [(ngModel)]="role" required="required"/>Student<br>
+            <input class="col-md-1" type="radio" name="role" value="student" [(ngModel)]="role"
+              required="required" />Student<br>
             <input class="col-md-1" type="radio" name="role" value="professor" [(ngModel)]="role">Professor<br>
           </div>
           <div class="row spacer5">
             <input type="submit" class="btn btn-primary" value="Login">
           </div>
           <div class="row spacer5">
-            <input type="reset">
+            <input type="reset" class="btn btn-primary">
           </div>
         </form>
       </div>
@@ -45,6 +51,11 @@
       <!--registration-->
       <div id="registration" class="tab-pane fade">
         <form ngNativeValidate (ngSubmit)="register()">
+            <div class="row spacer5">
+                <label class="col-md-1">Name:</label>
+                <input class="col-md-2" name="rname" type="text" placeholder="Enter name" [(ngModel)]="name"
+                  required="required" />
+              </div>
           <div class="row spacer5">
             <label class="col-md-1">Username:</label>
             <input class="col-md-2" name="rusername" type="text" placeholder="Enter username" [(ngModel)]="username"
@@ -57,7 +68,8 @@
           </div>
           <div class="row spacer5">
             <label class="col-md-1">Role:</label>
-            <input class="col-md-1" type="radio" name="rrole" value="student" [(ngModel)]="role" checked="true" required="required"/>Student<br>
+            <input class="col-md-1" type="radio" name="rrole" value="student" [(ngModel)]="role" checked="true"
+              required="required" />Student<br>
             <input class="col-md-1" type="radio" name="rrole" value="professor" [(ngModel)]="role">Professor<br>
           </div>
           <div class="row spacer5">
@@ -66,9 +78,9 @@
           <div class="row spacer5" *ngIf="showMessage==true">
             <p>You can login now with the registered credentials!</p>
           </div>
-          <div class="row spacer5"> 
-          <input type="reset">
-        </div>
+          <div class="row spacer5">
+            <input type="reset" class="btn btn-primary">
+          </div>
         </form>
       </div>
 

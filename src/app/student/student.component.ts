@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-student',
@@ -8,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class StudentComponent implements OnInit {
 
-  student: String = "bhakti";
+  student: String = this.dataService.serviceData;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
   }
