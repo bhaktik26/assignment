@@ -1,3 +1,25 @@
-<p>
-  upload-assignment works!
-</p>
+<div class="container">
+
+  <h1>Assignment</h1>
+
+  <div class="row">
+    <form ngNativeValidate>
+      <div class="row">
+        Enter no of MCQs:
+        <input type="number" name="mcq" [(ngModel)]="name" required />
+      </div>
+      <div class="row">
+        Enter no of Textual answers:
+        <input type="number" name="textual" [(ngModel)]="textual" required>
+      </div>
+      <div class="row">
+        <button type="submit" (ngSubmit)="createAssignment()">Create Assignment</button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="create">
+
+  </div>
+
+</div>

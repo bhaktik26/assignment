@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadAssignmentComponent implements OnInit {
 
+  create = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  createAssignment() {
+    this.create = true;
   }
 
 }
