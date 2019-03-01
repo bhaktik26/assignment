@@ -1,25 +1,35 @@
 <div class="container">
 
-  <h1>Assignment</h1>
+  <h1 class="spacer5">Assignment</h1>
 
-  <div class="row">
+  <div class="row spacer5">
     <form ngNativeValidate>
-      <div class="row">
-        Enter no of MCQs:
-        <input type="number" name="mcq" [(ngModel)]="name" required />
+      <div class="row spacer5">
+        <label class="col-md-2">Question:</label>
+        <input type="text" name="question" placeholder="Enter question here" class="col-md-6" [(ngModel)]="question">
       </div>
-      <div class="row">
-        Enter no of Textual answers:
-        <input type="number" name="textual" [(ngModel)]="textual" required>
+      <div class="row spacer5">
+        <label class="col-md-2">Type of question:</label>
+        <input type="radio" name="type" class="col-md-1" value="MCQ" [(ngModel)]="type" required />MCQ<br>
+        <input type="radio" name="type" class="col-md-1" value="Textual" [(ngModel)]="type" checked />Textual
       </div>
-      <div class="row">
-        <button type="submit" (ngSubmit)="createAssignment()">Create Assignment</button>
+      <div class="row spacer5">
+        <input type="reset" class="btn btn-primary col-md-2">
+      </div>
+
+      <div class="row spacer5" ng-show="type=='MCQ'">
+        <label class="col-md-2">Enter 4 MCQ options: </label>
+              <input type="text" name="Option 1" [(ngModel)]="option1" class="col-md-2">
+              <input type="text" name="Option 2" [(ngModel)]="option2" class="col-md-2">
+              <input type="text" name="Option 3" [(ngModel)]="option3" class="col-md-2">
+              <input type="text" name="Option 4" [(ngModel)]="option4" class="col-md-2">
+      </div>
+      
+      <div class="row spacer5">
+          <input type="button" name="storeQuestion" value="Store Question" (click)="storeQuestion()">
+        <input type="submit" class="btn btn-primary" value="Create Assignment" (click)="createAssignment()">
       </div>
     </form>
-  </div>
-
-  <div *ngIf="create">
-
   </div>
 
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-professor-courses',
@@ -8,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class ProfessorCoursesComponent implements OnInit {
 
+  data = "";
 
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
   }
@@ -34,7 +35,9 @@ export class ProfessorCoursesComponent implements OnInit {
     this.router.navigateByUrl('/uploadNotes');
   }
 
-  uploadAssignment() {
+  uploadAssignment(courseName) {
+    this.data = courseName;
+    this.dataService.serviceData = this.data;
     this.router.navigateByUrl('/uploadAssignment');
   }
 
