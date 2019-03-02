@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-upload-assignment',
@@ -9,49 +10,56 @@ import { DataService } from '../data.service';
 export class UploadAssignmentComponent implements OnInit {
 
   question: String;
-  type: String;
+  answer_type: String;
   assignment = [];
   option1: string;
   option2: string;
   option3: string;
   option4: string;
   body = {};
-  course="";
+  course = "";
+  assignment_name = "";
+  assignments = [];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private httpService : HttpClient) { }
 
   ngOnInit() {
-    
+
   }
 
   createAssignment() {
-//need to construct payload n then post
+    this.assignments.push({
+      assignment_name: this.assignment_name,
+      assignment: this.assignment
+    });
+    console.log(this.assignments);
+    //need to construct payload n then post
     this.body = {
       course: this.dataService.serviceData,
-      assignment : this.assignment
+      assignments: this.assignments
     }
     console.log(this.body);
+    this.assignment = [];
+    // post call
   }
-
- 
 
   storeQuestion() {
-    if(this.type=='MCQ') {
-    var add = {
-      question: this.question,
-      answer_type: this.type,
-      answer: [
-        this.option1, this.option2, this.option3, this.option4
-      ]
+    if (this.answer_type == 'MCQ') {
+      var add = {
+        question: this.question,
+        answer_type: this.answer_type,
+        answer: [
+          this.option1, this.option2, this.option3, this.option4
+        ]
+      }
     }
-  }
-  if(this.type=='Textual') {
-    var add = {
-      question: this.question,
-      answer_type: this.type,
-      answer: ["", "", "",""]
+    if (this.answer_type == 'Textual') {
+      var add = {
+        question: this.question,
+        answer_type: this.answer_type,
+        answer: ["", "", "", ""]
+      }
     }
-  }
     console.log(add);
     this.assignment.push(add);
   }

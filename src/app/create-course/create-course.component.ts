@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-course',
@@ -10,7 +11,7 @@ export class CreateCourseComponent implements OnInit {
   name: String ="";
   description: String = "";
 
-  constructor() { }
+  constructor(private httpService : HttpClient) { }
 
   ngOnInit() {
   }
@@ -19,6 +20,11 @@ export class CreateCourseComponent implements OnInit {
    * insert course into db
    */
   create() {
+    var body = {
+      name: this.name,
+      description: this.description
+    }
+    console.log(body);
     console.log("Course created");
   }
 

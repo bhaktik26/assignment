@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-professor-courses',
@@ -11,11 +12,12 @@ export class ProfessorCoursesComponent implements OnInit {
 
   data = "";
 
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(private router: Router, private dataService: DataService, private httpService : HttpClient) { }
 
   ngOnInit() {
   }
 
+  // need to get all courses by get call
   courses = [
     {
       'name': 'Java 8',

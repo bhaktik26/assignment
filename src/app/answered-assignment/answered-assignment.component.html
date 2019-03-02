@@ -1,0 +1,15 @@
+<div class="container">
+
+  <div class="row spacer5">
+    <h1>{{assignment_name}}</h1>
+  </div>
+
+  <ul class="list-group">
+    <li *ngFor="let questions of answers" class="list-group-item">
+      <span> <label class="row">{{ questions.question }}</label><br>
+        <label class="row">{{questions.answer}}</label>
+      </span>
+    </li>
+  </ul>
+
+</div>

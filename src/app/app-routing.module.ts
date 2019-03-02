@@ -15,6 +15,8 @@ import { StudentCoursesComponent } from './student-courses/student-courses.compo
 import { EnrolledCoursesComponent } from './enrolled-courses/enrolled-courses.component';
 import { ResultsComponent } from './results/results.component';
 import { CompleteAssignmentComponent } from './complete-assignment/complete-assignment.component';
+import { AssignmentComponent } from './assignment/assignment.component';
+import { AnsweredAssignmentComponent } from './answered-assignment/answered-assignment.component';
 
 const routes: Routes = [
   {
@@ -68,6 +70,14 @@ const routes: Routes = [
   {
     path: 'completeAssignment',
     component: CompleteAssignmentComponent
+  },
+  {
+    path: 'assignment',
+    component: AssignmentComponent
+  },
+  {
+    path: 'answered-assignment',
+    component: AnsweredAssignmentComponent
   }
 ];
 

@@ -18,6 +18,8 @@ import { StudentCoursesComponent } from './student-courses/student-courses.compo
 import { EnrolledCoursesComponent } from './enrolled-courses/enrolled-courses.component';
 import { ResultsComponent } from './results/results.component';
 import { CompleteAssignmentComponent } from './complete-assignment/complete-assignment.component';
+import { AssignmentComponent } from './assignment/assignment.component';
+import { AnsweredAssignmentComponent } from './answered-assignment/answered-assignment.component';
  
 
 @NgModule({
@@ -35,7 +37,9 @@ import { CompleteAssignmentComponent } from './complete-assignment/complete-assi
     StudentCoursesComponent,
     EnrolledCoursesComponent,
     ResultsComponent,
-    CompleteAssignmentComponent
+    CompleteAssignmentComponent,
+    AssignmentComponent,
+    AnsweredAssignmentComponent
   ],
   imports: [
     BrowserModule,

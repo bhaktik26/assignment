@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-show-notes',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowNotesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService : HttpClient) { }
 
   ngOnInit() {
   }
 
+  // get call
   notes = [
     {
       name: 'Functional interface',

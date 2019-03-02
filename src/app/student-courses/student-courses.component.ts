@@ -23,4 +23,12 @@ export class StudentCoursesComponent implements OnInit {
     }
   ]
 
+  enroll() {
+    var body = {
+
+    }
+    console.log(body);
+    // post call
+  }
+
 }

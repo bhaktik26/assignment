@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="row spacer5">
+    <h1>{{assignment_name}}</h1>
+  </div>
+
+  <ul class="list-group">
+    <li *ngFor="let questions of assignment" class="list-group-item">
+      <span> <label class="row">{{ questions.question }}</label><br>
+
+        <span *ngIf="questions.answer_type == 'Textual'">
+          <input type="text" name="textualAns" placeholder="Enter answer here" [(ngModel)]="ansTextual">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+
+        <span *ngIf="questions.answer_type == 'MCQ'">
+          <ul>
+            <li *ngFor="let option of questions.answer">
+              <input name = "MCQ" type="radio" [(ngModel)]="ansMCQ" value="{{option}}">
+              {{option}}
+            </li>
+          </ul>
+        </span>
+
+        <input type="button" value="Save" (click)="save(questions.question, questions.answer_type)" class="btn btn-primary">
+
+      </span>
+    </li>
+  </ul>
+
+  <div class="row spacer5">
+    <input type="button" value="Submit assignment" (click)="submitAssgt()" class="btn btn-primary">
+  </div>
+
+
+</div>
