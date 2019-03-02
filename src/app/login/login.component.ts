@@ -1,5 +1,5 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 
@@ -17,8 +17,9 @@ export class LoginComponent implements OnInit {
   body = {};
   title = 'VirtEdu';
   showMessage = false;
+  headers : HttpHeaders;
 
-  constructor(private httpService : HttpClient, private router: Router, private dataService: DataService) { }
+  constructor(private httpService: HttpClient, private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
   }
@@ -29,19 +30,39 @@ export class LoginComponent implements OnInit {
     console.log(this.role);
     console.log(this.name);
     this.dataService.serviceData = this.name;
-    //this.httpService.post('', this.body).subscribe((response) => {console.log(response)});
-    if(this.role == 'student')
-    this.router.navigateByUrl('/loginToStudent');
+    this.body = {
+      username: this.username,
+      password: this.password,
+      role: this.role
+    };
+    console.log(this.body);
+    this.setHeaders();
+    //this.httpService.post('localhost:8080/token/generate-token', this.body, { headers: this.headers }).subscribe((response) => {console.log(response)});
+    if (this.role == 'student')
+      this.router.navigateByUrl('/loginToStudent');
     else
-    this.router.navigateByUrl('/loginToProfessor')
+      this.router.navigateByUrl('/loginToProfessor')
   }
 
   register() {
-    console.log(this.username);
-    console.log(this.password);
-    console.log(this.role);
-   // this.httpService.post('', this.body).subscribe((response) => {console.log(response)});
-   this.showMessage = true;
+    //console.log(this.username);
+    //console.log(this.password);
+    // console.log(this.role);
+    this.body = {
+      username: this.username,
+      password: this.password,
+      confirmPassword: this.password,
+      role: this.role
+    };
+    this.setHeaders();
+    console.log(this.body);
+    console.log(this.headers);
+    // this.httpService.post('localhost:8080/register', this.body, { headers: this.headers }).subscribe((response) => {console.log(response)});
+    this.showMessage = true;
+  }
+
+  setHeaders() {
+    this.headers = new HttpHeaders().set('Content-Type', 'application/json');
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-student-courses',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentCoursesComponent implements OnInit {
 
-  constructor() { }
+  headers : HttpHeaders;
+  token: String;
+
+  constructor(private httpService : HttpClient) { }
 
   ngOnInit() {
+    this.headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token); 
+    // this.httpService.get('localhost:8080/courses',{headers:this.headers});
   }
 
   courses = [

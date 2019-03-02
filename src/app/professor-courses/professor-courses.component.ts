@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-professor-courses',
@@ -11,10 +11,14 @@ import { HttpClient } from '@angular/common/http';
 export class ProfessorCoursesComponent implements OnInit {
 
   data = "";
-
+  headers : HttpHeaders;
+  token : String;
+  //courses = [];
   constructor(private router: Router, private dataService: DataService, private httpService : HttpClient) { }
 
   ngOnInit() {
+    this.headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token); 
+    // this.httpService.get('localhost:8080/courses',{headers:this.headers});
   }
 
   // need to get all courses by get call
@@ -29,11 +33,13 @@ export class ProfessorCoursesComponent implements OnInit {
     }
   ]
 
-  showNotes() {
+  showNotes(courseName) {
+    this.dataService.serviceData = courseName;
     this.router.navigateByUrl('/showNotes');
   }
 
-  uploadNotes() {
+  uploadNotes(courseName) {
+    this.dataService.serviceData = courseName;
     this.router.navigateByUrl('/uploadNotes');
   }
 

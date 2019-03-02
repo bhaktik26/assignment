@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload-assignment',
@@ -21,7 +22,7 @@ export class UploadAssignmentComponent implements OnInit {
   assignment_name = "";
   assignments = [];
 
-  constructor(private dataService: DataService, private httpService : HttpClient) { }
+  constructor(private dataService: DataService, private httpService : HttpClient, private router: Router) { }
 
   ngOnInit() {
 
@@ -41,6 +42,7 @@ export class UploadAssignmentComponent implements OnInit {
     console.log(this.body);
     this.assignment = [];
     // post call
+    this.router.navigateByUrl('/professorCourses');
   }
 
   storeQuestion() {

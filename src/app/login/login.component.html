@@ -39,23 +39,27 @@
               required="required" />Student<br>
             <input class="col-md-1" type="radio" name="role" value="professor" [(ngModel)]="role">Professor<br>
           </div>
+
           <div class="row spacer5">
-            <input type="submit" class="btn btn-primary" value="Login">
+            <div class="col-md-2">
+              <input type="submit" class="btn btn-primary" value="Login">
+            </div>
+            <div class="col-md-2">
+              <input type="reset" class="btn btn-primary">
+            </div>
           </div>
-          <div class="row spacer5">
-            <input type="reset" class="btn btn-primary">
-          </div>
+
         </form>
       </div>
 
       <!--registration-->
       <div id="registration" class="tab-pane fade">
         <form ngNativeValidate (ngSubmit)="register()">
-            <div class="row spacer5">
-                <label class="col-md-1">Name:</label>
-                <input class="col-md-2" name="rname" type="text" placeholder="Enter name" [(ngModel)]="name"
-                  required="required" />
-              </div>
+          <div class="row spacer5">
+            <label class="col-md-1">Name:</label>
+            <input class="col-md-2" name="rname" type="text" placeholder="Enter name" [(ngModel)]="name"
+              required="required" />
+          </div>
           <div class="row spacer5">
             <label class="col-md-1">Username:</label>
             <input class="col-md-2" name="rusername" type="text" placeholder="Enter username" [(ngModel)]="username"
@@ -73,13 +77,15 @@
             <input class="col-md-1" type="radio" name="rrole" value="professor" [(ngModel)]="role">Professor<br>
           </div>
           <div class="row spacer5">
-            <input type="submit" class="btn btn-primary" value="Register">
-          </div>
+              <div class="col-md-2">
+                <input type="submit" class="btn btn-primary" value="Register">
+              </div>
+              <div class="col-md-2">
+                <input type="reset" class="btn btn-primary">
+              </div>
+            </div>
           <div class="row spacer5" *ngIf="showMessage==true">
             <p>You can login now with the registered credentials!</p>
-          </div>
-          <div class="row spacer5">
-            <input type="reset" class="btn btn-primary">
           </div>
         </form>
       </div>

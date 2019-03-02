@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-enrolled-courses',
@@ -9,9 +9,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EnrolledCoursesComponent implements OnInit {
 
+  headers: HttpHeaders;
+  token : String;
+
   constructor(private router: Router, private httpService: HttpClient) { }
 
   ngOnInit() {
+    this.headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token); 
+    //this.httpService.get('localhost:8080/enrolled/course/', {headers:this.headers});
   }
 
   // get call

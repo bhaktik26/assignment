@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-course',
@@ -8,10 +9,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CreateCourseComponent implements OnInit {
 
-  name: String ="";
+  name: String = "";
   description: String = "";
+  token: String;
 
-  constructor(private httpService : HttpClient) { }
+  constructor(private httpService: HttpClient, private router: Router) { }
 
   ngOnInit() {
   }
@@ -25,7 +27,12 @@ export class CreateCourseComponent implements OnInit {
       description: this.description
     }
     console.log(body);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'Bearer ' + this.token);
+    console.log(headers);
+    // post call
+    this.httpService.post('localhost:8080/course', body, {headers: headers });
     console.log("Course created");
+    this.router.navigateByUrl("/loginToProfessor")
   }
 
 }
