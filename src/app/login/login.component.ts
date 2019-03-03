@@ -19,12 +19,12 @@ export class LoginComponent implements OnInit {
   body = {};
   title = 'VirtEdu';
   showMessage = false;
-  headers : Headers;
+  headers: Headers;
   course = {};
-  options : RequestOptions
+  options: RequestOptions
 
-  constructor( private http: RestService, private router: Router, private dataService: DataService) { }
-// private httpService: EducationDataService,
+  constructor(private http: RestService, private router: Router, private dataService: DataService) { }
+  // private httpService: EducationDataService,
   ngOnInit() {
   }
 
@@ -41,6 +41,14 @@ export class LoginComponent implements OnInit {
     };
     console.log(this.body);
     this.setHeaders();
+    var stat;
+    var data = this.http.post('http://localhost:8080/token/generate-token', this.body, this.options);
+    data.subscribe(res => {
+      console.log(res);
+      stat = res.status;
+      console.log(stat);
+    });
+    
     //this.httpService.post('localhost:8080/token/generate-token', this.body, { headers: this.headers }).subscribe((response) => {console.log(response)});
     if (this.role == 'student')
       this.router.navigateByUrl('/loginToStudent');
@@ -66,12 +74,12 @@ export class LoginComponent implements OnInit {
     var data = this.http.post('http://localhost:8080/register', this.body, this.options);
     data.subscribe(res => console.log(res));
     this.showMessage = true;
-    console.log(this.course);
-    
+    //console.log(this.course);
+
   }
 
   setHeaders() {
-    this.headers =  new Headers({ 'Content-type': 'application/json' });
+    this.headers = new Headers({ 'Content-type': 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
   }
 
