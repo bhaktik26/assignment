@@ -20,6 +20,7 @@ import { ResultsComponent } from './results/results.component';
 import { CompleteAssignmentComponent } from './complete-assignment/complete-assignment.component';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { AnsweredAssignmentComponent } from './answered-assignment/answered-assignment.component';
+import { Http, ConnectionBackend, RequestOptions, HttpModule } from '@angular/http';
  
 
 @NgModule({
@@ -45,9 +46,9 @@ import { AnsweredAssignmentComponent } from './answered-assignment/answered-assi
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpModule
   ],
-  providers: [HttpClient],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

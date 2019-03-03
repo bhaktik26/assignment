@@ -20,8 +20,7 @@ export class UploadAssignmentComponent implements OnInit {
   body = {};
   course = "";
   assignment_name = "";
-  assignments = [];
-
+  
   constructor(private dataService: DataService, private httpService : HttpClient, private router: Router) { }
 
   ngOnInit() {
@@ -29,15 +28,12 @@ export class UploadAssignmentComponent implements OnInit {
   }
 
   createAssignment() {
-    this.assignments.push({
-      assignment_name: this.assignment_name,
-      assignment: this.assignment
-    });
-    console.log(this.assignments);
+
     //need to construct payload n then post
     this.body = {
       course: this.dataService.serviceData,
-      assignments: this.assignments
+      assignment_name: this.assignment_name,
+      assignment : this.assignment
     }
     console.log(this.body);
     this.assignment = [];

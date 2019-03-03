@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { EducationDataService } from '../education-data.service';
+import { RequestOptions, Headers } from '@angular/http';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +19,12 @@ export class LoginComponent implements OnInit {
   body = {};
   title = 'VirtEdu';
   showMessage = false;
-  headers : HttpHeaders;
+  headers : Headers;
+  course = {};
+  options : RequestOptions
 
-  constructor(private httpService: HttpClient, private router: Router, private dataService: DataService) { }
-
+  constructor( private http: RestService, private router: Router, private dataService: DataService) { }
+// private httpService: EducationDataService,
   ngOnInit() {
   }
 
@@ -57,12 +61,18 @@ export class LoginComponent implements OnInit {
     this.setHeaders();
     console.log(this.body);
     console.log(this.headers);
-    // this.httpService.post('localhost:8080/register', this.body, { headers: this.headers }).subscribe((response) => {console.log(response)});
+    // this.httpService.post('localhost:8080/template/products', this.body, { headers: this.headers }).subscribe((response) => {console.log(response)});
+    //var data = this.httpService.getData('localhost:8080/template/products', this.options);
+    var data = this.http.post('http://localhost:8080/register', this.body, this.options);
+    data.subscribe(res => console.log(res));
     this.showMessage = true;
+    console.log(this.course);
+    
   }
 
   setHeaders() {
-    this.headers = new HttpHeaders().set('Content-Type', 'application/json');
+    this.headers =  new Headers({ 'Content-type': 'application/json' });
+    this.options = new RequestOptions({ headers: this.headers });
   }
 
 }
