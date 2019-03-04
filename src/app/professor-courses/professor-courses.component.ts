@@ -14,7 +14,7 @@ export class ProfessorCoursesComponent implements OnInit {
   headers : HttpHeaders;
   token : String;
   //courses = [];
-  constructor(private router: Router, private dataService: DataService, private httpService : HttpClient) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
     this.headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token); 

@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
-  serviceData : String;
+  serviceData : string;
+  token : String;
+  professorName : string;
 
   constructor() { }
 }

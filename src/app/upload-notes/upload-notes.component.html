@@ -15,8 +15,8 @@
       <input class="col-md-2" name="chapter_name" type="text" placeholder="Chapter name" [(ngModel)]="chapter_name"
         required />
     </div>
-    <div class="row spacer5" file-model="file">
-      <input type="file" file="file" accept="application/pdf" required />
+    <div class="row spacer5">
+      <input type="file" file="file" accept="application/pdf" name = "file" [(ngModel)]="file" required />
     </div>
     <div class="row spacer5">
       <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span>&nbsp;&nbsp;Upload

@@ -15,13 +15,15 @@ export class LoginComponent implements OnInit {
   role: String = "";
   username: String = "";
   password: String = "";
-  name: String = "";
+  name: string = "";
   body = {};
   title = 'VirtEdu';
   showMessage = false;
   headers: Headers;
   course = {};
   options: RequestOptions
+  token: String;
+  professorName : string;
 
   constructor(private http: RestService, private router: Router, private dataService: DataService) { }
   // private httpService: EducationDataService,
@@ -46,7 +48,21 @@ export class LoginComponent implements OnInit {
     data.subscribe(res => {
       console.log(res);
       stat = res.status;
+      this.token = res._body.token;
+      this.professorName = res._body.username;
       console.log(stat);
+      console.log(res._body);
+      var bodydata = JSON.parse(res._body);
+      console.log(bodydata.token);
+      this.token = bodydata.token;
+      this.professorName = bodydata.username;
+      /**
+       * {"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaHJleWFzIiwic2NvcGVzIjoicHJvZmVzc29yIiwiaWF0IjoxNTUxNzE1MTQ2LCJleHAiOjE1NTE3MzMxNDZ9.IKvM1ZR2zsJsp7nJl_Ba69aHqBTDvCUU0LXIbDagtT8","username":"shreyas","id":2,"role":"professor"}
+       */
+
+       // set token and professor name in data service
+       this.dataService.token = this.token;
+       this.dataService.professorName = this.professorName;
     });
     
     //this.httpService.post('localhost:8080/token/generate-token', this.body, { headers: this.headers }).subscribe((response) => {console.log(response)});
