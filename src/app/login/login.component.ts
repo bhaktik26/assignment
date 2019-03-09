@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
   course = {};
   options: RequestOptions
   token: String;
-  professorName : string;
+  professorName: string;
+  error = false;
 
   constructor(private http: RestService, private router: Router, private dataService: DataService) { }
   // private httpService: EducationDataService,
@@ -56,26 +57,20 @@ export class LoginComponent implements OnInit {
       console.log(bodydata.token);
       this.token = bodydata.token;
       this.professorName = bodydata.username;
-      /**
-       * {"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaHJleWFzIiwic2NvcGVzIjoicHJvZmVzc29yIiwiaWF0IjoxNTUxNzE1MTQ2LCJleHAiOjE1NTE3MzMxNDZ9.IKvM1ZR2zsJsp7nJl_Ba69aHqBTDvCUU0LXIbDagtT8","username":"shreyas","id":2,"role":"professor"}
-       */
-
-       // set token and professor name in data service
-       this.dataService.token = this.token;
-       this.dataService.professorName = this.professorName;
-    });
-    
-    //this.httpService.post('localhost:8080/token/generate-token', this.body, { headers: this.headers }).subscribe((response) => {console.log(response)});
-    if (this.role == 'student')
+      // set token and professor name in data service
+      this.dataService.token = this.token;
+      this.dataService.professorName = this.professorName;
+      if (this.role == 'student' && stat == 200)
       this.router.navigateByUrl('/loginToStudent');
-    else
+    else if (this.role == 'professor' && stat == 200)
       this.router.navigateByUrl('/loginToProfessor')
+      if(stat == 401)
+      this.error = true;
+    });
+    //this.httpService.post('localhost:8080/token/generate-token', this.body, { headers: this.headers }).subscribe((response) => {console.log(response)});
   }
 
   register() {
-    //console.log(this.username);
-    //console.log(this.password);
-    // console.log(this.role);
     this.body = {
       username: this.username,
       password: this.password,
@@ -90,8 +85,6 @@ export class LoginComponent implements OnInit {
     var data = this.http.post('http://localhost:8080/register', this.body, this.options);
     data.subscribe(res => console.log(res));
     this.showMessage = true;
-    //console.log(this.course);
-
   }
 
   setHeaders() {

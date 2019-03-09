@@ -21,6 +21,7 @@ export class ProfessorComponent implements OnInit {
   }
 
   viewAllCourses() {
+    this.dataService.professorName = String(this.professor);
     this.router.navigateByUrl('/professorCourses');
     // this.displayCourses = true;
   }

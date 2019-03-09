@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { RestService } from '../rest.service';
+import { RequestOptions, Headers } from '@angular/http';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-create-course',
@@ -11,9 +13,11 @@ export class CreateCourseComponent implements OnInit {
 
   name: String = "";
   description: String = "";
-  token: String;
+  token: String = this.dataService.token;
+  headers : Headers;
+  options : RequestOptions;
 
-  constructor(private httpService: HttpClient, private router: Router) { }
+  constructor(private http: RestService, private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
   }
@@ -27,11 +31,14 @@ export class CreateCourseComponent implements OnInit {
       description: this.description
     }
     console.log(body);
-    let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'Bearer ' + this.token);
-    console.log(headers);
+    this.headers = new Headers({ 'Content-type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+    this.options = new RequestOptions({ headers: this.headers });
     // post call
-    this.httpService.post('localhost:8080/course', body, {headers: headers });
-    console.log("Course created");
+    var data = this.http.post('http://localhost:8080/course', body, this.options);
+    data.subscribe(res => {
+      console.log(res);
+      console.log("Course created");
+    });
     this.router.navigateByUrl("/loginToProfessor")
   }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-assignment',
@@ -34,7 +33,7 @@ export class AssignmentComponent implements OnInit {
   answers =[];
   
 
-  constructor(private dataService: DataService, private httpService: HttpClient) { 
+  constructor(private dataService: DataService) { 
     this.assignment_name = this.dataService.serviceData;
   }
 

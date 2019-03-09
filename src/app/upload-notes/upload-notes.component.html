@@ -5,7 +5,7 @@
     </h1>
   </div>
 
-  <form ngNativeValidate (ngSubmit)="uploadNote()">
+  <form ngNativeValidate (ngSubmit)="uploadNote()" enctype="multipart/form-data">
     <div class="row spacer5">
       <label class="col-md-2">Note name:</label>
       <input class="col-md-2" name="note_name" type="text" placeholder="Note name" [(ngModel)]="name" required />

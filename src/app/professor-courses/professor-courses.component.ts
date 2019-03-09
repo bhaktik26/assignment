@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Headers, RequestOptions } from '@angular/http';
+import { RestService } from '../rest.service';
+
 
 @Component({
   selector: 'app-professor-courses',
@@ -11,18 +13,26 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ProfessorCoursesComponent implements OnInit {
 
   data = "";
-  headers : HttpHeaders;
-  token : String;
-  //courses = [];
-  constructor(private router: Router, private dataService: DataService) { }
+  headers : Headers;
+  token : String = this.dataService.token;
+  options : RequestOptions
+  name: String = this.dataService.professorName;
+  courses = [];
+  constructor(private router: Router, private dataService: DataService, private http:RestService) { }
 
   ngOnInit() {
-    this.headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token); 
-    // this.httpService.get('localhost:8080/courses',{headers:this.headers});
+    this.headers = new Headers({ 'Authorization': 'Bearer ' + this.token,'Content-type' : 'application/json' });
+    this.options = new RequestOptions({ headers: this.headers });
+    var data = this.http.get('http://localhost:8080/courses/?professorName=' + this.name , this.options);
+    data.subscribe(res => {
+      console.log(res);
+      this.courses = JSON.parse(res._body);
+      console.log(this.courses);
+    });
   }
 
   // need to get all courses by get call
-  courses = [
+  /* courses = [
     {
       'name': 'Java 8',
       'description': 'Java 8 description'
@@ -31,7 +41,7 @@ export class ProfessorCoursesComponent implements OnInit {
       'name': 'Java 7',
       'description': 'Java 7 description'
     }
-  ]
+  ] */
 
   showNotes(courseName) {
     this.dataService.serviceData = courseName;

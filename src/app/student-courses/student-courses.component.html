@@ -11,10 +11,14 @@
       </div>
       <div class="spacer5 col-md-4" style="border-style:solid; border-width:1px">
         <div class="col-md-6">
-          <input type="submit" class="btn btn-primary" value="Enroll" (click)="enroll()">
+          <input type="submit" class="btn btn-primary" value="Enroll" (click)="enroll(course.name)">
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="row" *ngIf="errorMessage">
+    You have already enrolled for this course!
   </div>
 
 </div>

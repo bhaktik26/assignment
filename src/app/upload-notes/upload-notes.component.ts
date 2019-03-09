@@ -27,23 +27,18 @@ export class UploadNotesComponent implements OnInit {
   }
 
   uploadNote() {
-    this.headers = new Headers({ 'Authorization': 'Bearer ' + this.token });
+    
+    this.headers = new Headers({ 'Authorization': 'Bearer ' + this.token , 'Content-Type': 'undefined'});
     this.options = new RequestOptions({ headers: this.headers });
     var fd = new FormData();
-    fd.append('name', this.name);
-    fd.append('chapterName', this.chapter_name);
-    fd.append('courseName', this.courseName);
-    fd.append('notes_file', this.file);
+    fd.set('name', this.name);
+    fd.set('chapterName', this.chapter_name);
+    fd.set('courseName', this.courseName);
+    fd.set('notes_file', this.file);
     console.log(fd);
 
-    var body = {
-      name: this.name,
-      chapterName: this.chapter_name,
-      courseName: this.courseName,
-      professorName : this.professorName,
-      notes_file : fd
-    }
-    console.log(body);
+   
+    //console.log(body);
     console.log(this.options);
     // post call
     var data = this.http.post('http://localhost:8080/notes', fd, this.options);
