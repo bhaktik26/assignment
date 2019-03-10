@@ -38,8 +38,8 @@ export class CreateCourseComponent implements OnInit {
     data.subscribe(res => {
       console.log(res);
       console.log("Course created");
+      this.router.navigateByUrl("/loginToProfessor")
     });
-    this.router.navigateByUrl("/loginToProfessor")
   }
 
 }

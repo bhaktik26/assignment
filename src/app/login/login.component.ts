@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     console.log(this.password);
     console.log(this.role);
     console.log(this.name);
-    this.dataService.serviceData = this.name;
+    this.dataService.serviceData = this.username;
     this.body = {
       username: this.username,
       password: this.password,

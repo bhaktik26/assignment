@@ -49,11 +49,10 @@
             </div>
           </div>
 
-          <div class="row spacer5" *ngIf = "error">
-            Incorrect credentials!! Please re-enter.
-          </div>
-
         </form>
+        <div class="row spacer5" *ngIf = "error==true">
+          Incorrect credentials!! Please re-enter.
+        </div>
       </div>
 
       <!--registration-->

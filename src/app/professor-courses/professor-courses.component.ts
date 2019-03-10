@@ -23,7 +23,8 @@ export class ProfessorCoursesComponent implements OnInit {
   ngOnInit() {
     this.headers = new Headers({ 'Authorization': 'Bearer ' + this.token,'Content-type' : 'application/json' });
     this.options = new RequestOptions({ headers: this.headers });
-    var data = this.http.get('http://localhost:8080/courses/?professorName=' + this.name , this.options);
+    var pro = this.name;
+    var data = this.http.get('http://localhost:8080/courses/?professorName=' + pro , this.options);
     data.subscribe(res => {
       console.log(res);
       this.courses = JSON.parse(res._body);

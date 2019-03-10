@@ -13,12 +13,10 @@
         <div class="col-md-6">
           <input type="submit" class="btn btn-primary" value="Enroll" (click)="enroll(course.name)">
         </div>
+        <div class="col-md-6" *ngIf="errorMessage==true">
+          <p>You have already enrolled for this course!</p>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="row" *ngIf="errorMessage">
-    You have already enrolled for this course!
-  </div>
-
 </div>

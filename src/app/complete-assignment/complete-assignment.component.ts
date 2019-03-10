@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-complete-assignment',
@@ -59,7 +58,7 @@ export class CompleteAssignmentComponent implements OnInit {
       }
     ];
 
-  constructor(private router: Router, private dataService: DataService, private httpService: HttpClient) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
   }

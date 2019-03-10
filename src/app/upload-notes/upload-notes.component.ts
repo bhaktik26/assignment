@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DataService } from '../data.service';
 import { RestService } from '../rest.service';
 import { RequestOptions, Headers } from '@angular/http';
@@ -19,7 +18,7 @@ export class UploadNotesComponent implements OnInit {
   courseName = this.dataService.serviceData;
   headers: Headers;
   options: RequestOptions;
-  professorName: string = this.dataService.professorName;
+  professorName: String = this.dataService.professorName;
 
   constructor(private http: RestService, private dataService: DataService) { }
 
@@ -33,12 +32,19 @@ export class UploadNotesComponent implements OnInit {
     var fd = new FormData();
     fd.set('name', this.name);
     fd.set('chapterName', this.chapter_name);
-    fd.set('courseName', this.courseName);
+    //fd.set('courseName', this.courseName);
     fd.set('notes_file', this.file);
     console.log(fd);
+    console.log("name " + fd.get('name'));
 
-   
-    //console.log(body);
+   var body = {
+    name:this.name,
+    chapterName:this.chapter_name,
+    courseName:this.courseName,
+    notes_file:this.file
+   }
+
+    console.log(body);
     console.log(this.options);
     // post call
     var data = this.http.post('http://localhost:8080/notes', fd, this.options);

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,7 +20,7 @@ export class UploadAssignmentComponent implements OnInit {
   course = "";
   assignment_name = "";
   
-  constructor(private dataService: DataService, private httpService : HttpClient, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
 

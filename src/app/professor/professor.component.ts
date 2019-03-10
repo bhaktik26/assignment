@@ -13,7 +13,7 @@ export class ProfessorComponent implements OnInit {
   displayCreation = false;
   displayCourses = false;
   name = "";
-  professor: String = this.dataService.serviceData;
+  professor: String = this.dataService.professorName;
 
   constructor(private router: Router, private dataService: DataService) { }
 
@@ -21,7 +21,7 @@ export class ProfessorComponent implements OnInit {
   }
 
   viewAllCourses() {
-    this.dataService.professorName = String(this.professor);
+    this.dataService.professorName = this.professor;
     this.router.navigateByUrl('/professorCourses');
     // this.displayCourses = true;
   }
